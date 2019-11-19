@@ -99,7 +99,11 @@ void Renderer::MouseProcessing(int button)
 	
 	if (button == 1)
 	{
-
+		/*float near = core().camera_dnear, far = core().camera_dfar, angle = core().camera_view_angle;
+		float z = far + depth * (near - far);
+		float xToMove = -xrel / core().viewport[3] * far / z * near * 2.0f * tan(angle / 360 * M_PI) / (core().camera_zoom * core().camera_base_zoom);
+		float yToMove = yrel / core().viewport[3] * far / z * near * 2.0f * tan(angle / 360 * M_PI) / (core().camera_zoom * core().camera_base_zoom);
+*/
 		scn->data().MyTranslate(Eigen::Vector3f(-xrel / 2000.0f, 0, 0));
 		scn->data().MyTranslate(Eigen::Vector3f(0,yrel / 2000.0f,0));
 		

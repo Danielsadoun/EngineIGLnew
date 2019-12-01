@@ -156,6 +156,10 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 		case ':':
 			scn->data().show_faceid = !scn->data().show_faceid;
 			break;
+		case ' ':
+			//call simplification function which tries to reduce 5% of the edges in the chosen object
+			scn->simplificate((double)(scn->struct_list[scn->selected_data_index].Q->size()) * 0.05);
+			break;
 		default: break;//do nothing
 		}
 }

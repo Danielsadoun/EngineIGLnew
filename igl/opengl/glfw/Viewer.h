@@ -11,12 +11,13 @@
 #ifndef IGL_OPENGL_4
 #define IGL_OPENGL_4
 #endif
-
+#include "../../../tutorial/sandBox/Mesh_Data_Struct.h"
 #include "../../igl_inline.h"
 #include "../MeshGL.h"
 //#include "../ViewerCore.h"
 #include "../ViewerData.h"
 #include "ViewerPlugin.h"
+#include "../../collapse_edge.h"
 
 #include <Eigen/Core>
 #include <Eigen/Geometry>
@@ -113,6 +114,8 @@ namespace glfw
     // Retrieve mesh index from its unique identifier
     // Returns 0 if not found
     IGL_INLINE size_t mesh_index(const int id) const;
+	//simplification function
+	bool simplificate(double edges_to_delete);
 
 
 public:
@@ -124,7 +127,7 @@ public:
     // old "data" variable.
     // Stores all the data that should be visualized
     std::vector<ViewerData> data_list;
-
+	std::vector<Mesh_Data_Struct> struct_list;
     size_t selected_data_index;
     int next_data_id;
 

@@ -188,6 +188,8 @@ namespace glfw
       data().grid_texture();
     }
     
+	Mesh_Data_Struct s(mesh_file_name_string);//put in selected_data_index in struct_list new Mesh_Data_Struct which is the struct of data() 
+	struct_list.push_back(s);
 
     //for (unsigned int i = 0; i<plugins.size(); ++i)
     //  if (plugins[i]->post_load())
@@ -362,6 +364,30 @@ namespace glfw
     return 0;
   }
 
+  bool Viewer::simplificate(double edges_to_delete) {
+	  bool something_collapsed = false;
+	  for (int i = 0; i < edges_to_delete; i++) {
+		  if (!collapse_edge(
+			  shortest_edge_and_midpoint, struct_list[selected_data_index].V, struct_list[selected_data_index].F,
+			  struct_list[selected_data_index].E, struct_list[selected_data_index].EMAP, struct_list[selected_data_index].EF,
+			  struct_list[selected_data_index].EI, *struct_list[selected_data_index].Q, *struct_list[selected_data_index].Qit,
+			  struct_list[selected_data_index].C))
+		  {
+			  break;
+		  }
+		  something_collapsed = true;
+		  struct_list[selected_data_index].num_collapsed = struct_list[selected_data_index].num_collapsed + 1;
+	  }
+	  if (something_collapsed)
+	  {
+		  data().clear();
+		  data().set_mesh(struct_list[selected_data_index].V, struct_list[selected_data_index].F);
+		  data().set_face_based(true);
+	  }
+
+	  return false;
+
+  }
  
 
 } // end namespace

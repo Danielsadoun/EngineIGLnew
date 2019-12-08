@@ -1,3 +1,0 @@
-C:/Dev/EngineIGLnew/tutorial/data/sphere.obj
-C:/Dev/EngineIGLnew/tutorial/data/cube.obj
-C:/Dev/EngineIGLnew/tutorial/data/bunny.off

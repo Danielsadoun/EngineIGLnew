@@ -440,7 +440,7 @@ namespace glfw
 		  data().clear();
 		  data().set_mesh(struct_list[selected_data_index].V, struct_list[selected_data_index].F);
 		  data().set_face_based(true);
-		  //std::cout << "collapsed " << struct_list[selected_data_index].num_collapsed << " edges" << std::endl;
+		  std::cout << "collapsed " << struct_list[selected_data_index].num_collapsed << " edges" << std::endl;
 	  }
 
 	  return false;
